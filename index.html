@@ -635,7 +635,23 @@
     if (proofTrack) proofTrack.innerHTML += proofTrack.innerHTML;
 
     // ===== TRACKING META =====
-    const sessionId = 'sess_' + Math.random().toString(36).slice(2) + Date.now().toString(36);
+    // Session-ID (UUID, persist in localStorage) – Dashboard erwartet UUID-Format
+    function uuidv4() {
+      if (window.crypto && window.crypto.randomUUID) return window.crypto.randomUUID();
+      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+        const r = Math.random() * 16 | 0;
+        const v = c === 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+      });
+    }
+    let sessionId;
+    try {
+      sessionId = localStorage.getItem('gc_quiz_session_' + LANDINGPAGE_ID);
+      if (!sessionId) {
+        sessionId = uuidv4();
+        localStorage.setItem('gc_quiz_session_' + LANDINGPAGE_ID, sessionId);
+      }
+    } catch(e) { sessionId = uuidv4(); }
     const trackingParams = {};
     new URLSearchParams(window.location.search).forEach((v, k) => { if (/^utm_|^fbclid|^gclid/.test(k)) trackingParams[k] = v; });
     function trackFunnelEvent(step) {
