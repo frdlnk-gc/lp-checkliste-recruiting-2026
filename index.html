@@ -758,9 +758,12 @@
       step5Error.classList.remove('active');
       if (phoneInput.value.trim().replace(/\D/g, '').length < 6) { phoneInput.classList.add('is-error'); step5Error.classList.add('active'); return; }
       if (!privacyBox.checked) { step5Error.classList.add('active'); return; }
-      let phone = phoneInput.value.trim();
-      if (!phone.startsWith('+')) phone = '+49 ' + phone.replace(/^0+/, '');
-      answers.phone = phone;
+      // Telefonnummer auf sauberes E.164 normalisieren (keine Leerzeichen/Sonderzeichen!)
+      let digits = phoneInput.value.replace(/\D/g, ''); // nur Ziffern
+      if (digits.startsWith('00')) digits = digits.slice(2);          // 0049… -> 49…
+      else if (digits.startsWith('0')) digits = '49' + digits.slice(1); // 0173… -> 49173…
+      else if (!digits.startsWith('49')) digits = '49' + digits;        // 173…  -> 49173…
+      answers.phone = '+' + digits;
 
       const originalText = finalSubmit.textContent;
       finalSubmit.textContent = 'Wird gesendet…';
