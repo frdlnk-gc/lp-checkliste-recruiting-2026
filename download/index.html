@@ -1055,11 +1055,17 @@
         btn.textContent = 'Wird gesendet\u2026';
         btn.disabled = true;
 
+        // Telefonnummer auf sauberes E.164 normalisieren (keine Leerzeichen/Sonderzeichen!)
+        let tDigits = document.getElementById('t-phone').value.replace(/\D/g, '');
+        if (tDigits.startsWith('00')) tDigits = tDigits.slice(2);
+        else if (tDigits.startsWith('0')) tDigits = '49' + tDigits.slice(1);
+        else if (!tDigits.startsWith('49')) tDigits = '49' + tDigits;
+
         const payload = {
           vorname: document.getElementById('t-vorname').value.trim(),
           nachname: document.getElementById('t-nachname').value.trim(),
           unternehmen: document.getElementById('t-unternehmen').value.trim(),
-          phone: document.getElementById('t-phone').value.trim(),
+          phone: '+' + tDigits,
           email: document.getElementById('t-email').value.trim(),
           mitarbeiter: document.getElementById('t-mitarbeiter').value,
           herausforderung: document.getElementById('t-herausforderung').value.trim(),
