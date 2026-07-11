@@ -900,6 +900,44 @@
     </div>
   </section>
 
+  <!-- NEXT STEPS: Report + Kalkulator (Beratungsgespräch läuft über das Formular oben) -->
+  <style>
+    .dl-next-section { padding: 4px 0 52px; }
+    .dl-next-head { font-size: 0.95rem; font-weight: 800; color: var(--moss); text-align: center; margin-bottom: 18px; }
+    .dl-next-bubbles { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; max-width: 760px; margin: 0 auto; }
+    .dl-next-bubble { display: flex; gap: 14px; align-items: flex-start; background: #ffffff; border: 1px solid #e6e9e6; border-radius: 15px; padding: 16px 18px; text-align: left; transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), border-color 0.3s, box-shadow 0.3s; }
+    .dl-next-bubble:hover { transform: translateY(-3px); border-color: rgba(0,210,97,0.45); box-shadow: 0 14px 32px rgba(36,60,36,0.1); }
+    .dl-nb-icon { flex-shrink: 0; width: 46px; height: 46px; border-radius: 12px; background: var(--gradient-cta); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; box-shadow: 0 6px 16px rgba(0,210,97,0.28); }
+    .dl-nb-body { display: flex; flex-direction: column; gap: 3px; }
+    .dl-nb-title { font-size: 0.95rem; font-weight: 800; color: var(--moss); line-height: 1.2; }
+    .dl-nb-text { font-size: 0.8rem; color: var(--earth); line-height: 1.4; }
+    .dl-nb-link { font-size: 0.8rem; font-weight: 800; color: var(--lime-green); margin-top: 3px; }
+    @media (max-width: 640px) { .dl-next-bubbles { grid-template-columns: 1fr; } }
+  </style>
+  <section class="dl-next-section">
+    <div class="container">
+      <p class="dl-next-head">Das bringt Sie als N&auml;chstes weiter &ndash; alles kostenlos:</p>
+      <div class="dl-next-bubbles">
+        <a class="dl-next-bubble" href="https://kalkulator.green-careers.de" target="_blank" rel="noopener">
+          <span class="dl-nb-icon">&#129518;</span>
+          <span class="dl-nb-body">
+            <span class="dl-nb-title">Bewerberpool-Kalkulator</span>
+            <span class="dl-nb-text">In 2 Minuten sehen Sie, wie viele Bewerber Sie f&uuml;r Ihre offene Stelle wirklich brauchen, um sie zu besetzen.</span>
+            <span class="dl-nb-link">Jetzt berechnen &rarr;</span>
+          </span>
+        </a>
+        <a class="dl-next-bubble" href="https://recruiting-report-2026.green-careers.de" target="_blank" rel="noopener">
+          <span class="dl-nb-icon">&#128202;</span>
+          <span class="dl-nb-body">
+            <span class="dl-nb-title">Recruiting-Report 2026</span>
+            <span class="dl-nb-text">Die wichtigsten Zahlen und Hebel zur Personalgewinnung in der gr&uuml;nen Branche &ndash; auf den Punkt.</span>
+            <span class="dl-nb-link">Report ansehen &rarr;</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer>
     <div class="container footer-inner">
